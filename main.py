@@ -1,7 +1,6 @@
 import tkinter as tk
 from menu import *
 import datetime
-from time_funcs import getTime
+from time_funcs import *
 
-for i in range(500):
-    print(getTime())
+print(getSecondsFromTime(input("input time as hh:mm:ss")))
