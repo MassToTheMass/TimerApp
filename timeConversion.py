@@ -6,7 +6,7 @@ def secondsToMinSec(seconds):
         seconds -= 60
         minutes += 1
     
-    return str(minutes) + ":" + str(seconds)
+    return str(minutes) + (":" if seconds > 9 else ":0") + str(seconds)
 
     
 
