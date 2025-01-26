@@ -1,8 +1,5 @@
 
 
-def configureMenu(menu):
+def toggleTextBox():
 
-    
-
-
-    return 
+    pass
