@@ -27,8 +27,7 @@ class App():
         self.notebook.add(self.tab2, text="Options")
 
         # extra label stuff just for setup
-        ttk.Label(self.tab1, text="Tab 1").pack()
-        ttk.Label(self.tab2, text="Tab 2").pack()
+        ttk.Label(self.tab2, text="Options and Stuff... To come later").pack()
 
     def startLoop(self):
         self.root.mainloop()
@@ -38,9 +37,16 @@ class App():
     def initTimer(self, seconds):
 
         self.timeLabel = tk.Label(self.tab1, text=secondsToTime(seconds))
-        self.timeLabel.pack()
+        self.timeLabel.pack(fill="both", expand=True)
         self._updateTimer(seconds)
 
+        self.timeLabel.bind("<Configure>", self._resizeText)
+
+
+    def _resizeText(self, event):
+
+        new_font_size = max(10, int(event.height / 2))
+        self.timeLabel.config(font=("Helvetica", new_font_size))
 
 
 
@@ -49,7 +55,7 @@ class App():
         
         if seconds != 0:
             self.timeLabel.configure(text=secondsToTime(seconds))
-            self.timeLabel.pack()
+            self.timeLabel.pack(fill="both", expand=True)
             self.root.after(1000, self._updateTimer, (seconds - 1))
 
         else:
